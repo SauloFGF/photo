@@ -1,0 +1,28 @@
+.gallery-container{
+    display: flex;
+    justify-content: center;
+    gap:25px;
+
+}
+.img-gallery{
+    width: 100px;
+    height: 100px;
+}
+.viewer{
+    filter: blur(1px);
+    width: 700px;
+    height: 600px;
+    margin: 15px;
+}
+.grad{
+    display: flex;
+    
+
+}
+.filters{
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
