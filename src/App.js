@@ -6,20 +6,18 @@ const imagens = ['https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__48
                 'https://cdn.pixabay.com/photo/2016/10/14/19/21/canyon-1740973__340.jpg',"https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285__340.jpg","https://cdn.pixabay.com/photo/2017/02/15/11/15/wintry-2068298__340.jpg",
             "https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828__340.jpg", "https://cdn.pixabay.com/photo/2014/01/30/18/26/skyline-255116__340.jpg",]
 
+
 const App = () => {
     const [image, setImage] = useState(0)
     const [blur, setBlur] = useState(0)
-    const [brig, setbrig] = useState(0)
+    const [brig, setBrig] = useState(0)
+    const [atr, setAtr] = useState(null)
 
-    function handleChangeblur (evt) {
-        if(handleChange){
-        setBlur(evt.target.value)
-        }
-    }
-    function handleChange (evt) {
-        if(handleChange){
-        setbrig(evt.target.value)
-        }
+    function handleChangeBlur (evt) {
+        setBlur(evt.target.value.this)
+        setBrig(evt.target.value)
+        setAtr(evt.target.dataset.filter)
+        console.dir(atr)
     }
 
 
@@ -34,29 +32,27 @@ const App = () => {
             </div>
             <div className="grad">
                 <img className="viewer" src={image} alt='' 
-                 style={{filter: `blur(${blur}px)`        
+                 style={{filter: `${atr}(${brig}%)`        
                  }} />
                 <div className="filters">
                 <h3>Blur</h3>
-                <input type='range' min='0' max="10" onChange={handleChangeblur} id="rangeBlur" value={blur}/>
+                <input type='range' min='0' max="10" onChange={handleChangeBlur} data-filter="blur" value='0'/>
                 <h3>Brightness</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeBrightness" value={style}/>
+                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="brightness" value='100'/>
                 <h3>Contrast</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeContrast" value={style}/>
+                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="contrast" value='100'/>
                 <h3>Grayscale</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeGrayscale" value={style}/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="grayscale" value='0'/>
                 <h3>Invert</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeInvert" value={style}/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="invert" value="0"/>
                 <h3>Opacity</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeOpacity" value={style}/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="opacity" value="100"/>
                 <h3>Saturate</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeSaturate" value={style}/>
+                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="Saturate" value="100"/>
                 <h3>Sepia</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeSepia" value={style}/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="sepia" value='0'/>
                 <h3>Hue-Rotate</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeHue-Rotate" value={style}/>
-                <h3>Drop-Shadow</h3>
-                <input type='range' min='0' max="10" onChange={handleChange} id="rangeDrop-Shadow" value={style}/>
+                <input type='range' min='0' max="360" onChange={handleChangeBlur} data-filter="hue-rotate" value={blur}/>
                 </div>
             </div>
         </div>
