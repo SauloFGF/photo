@@ -11,10 +11,10 @@ const App = () => {
     const [image, setImage] = useState(0)
     const [blur, setBlur] = useState(0)
     const [brig, setBrig] = useState(0)
-    const [atr, setAtr] = useState(null)
+    const [atr, setAtr] = useState(0)
 
     function handleChangeBlur (evt) {
-        setBlur(evt.target.value.this)
+        setBlur({value: evt.target.value.this})
         setBrig(evt.target.value)
         setAtr(evt.target.dataset.filter)
         console.dir(atr)
@@ -27,7 +27,8 @@ const App = () => {
             <h1>Gallery</h1>
             <div className="gallery-container">
             {imagens.map(function(image){
-                return <img onClick={() => setImage(image)} className='img-gallery' src={image} alt='' />
+                return <img onClick={() => {setImage(image)
+                setBlur({value: "0"})}} className='img-gallery' src={image} alt='' />
             })}
             </div>
             <div className="grad">
@@ -36,23 +37,23 @@ const App = () => {
                  }} />
                 <div className="filters">
                 <h3>Blur</h3>
-                <input type='range' min='0' max="10" onChange={handleChangeBlur} data-filter="blur" value='0'/>
+                <input type='range' min='0' max="10" onChange={handleChangeBlur} data-filter="blur" value={blur.value}/>
                 <h3>Brightness</h3>
-                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="brightness" value='100'/>
+                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="brightness" value={blur.value}/>
                 <h3>Contrast</h3>
-                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="contrast" value='100'/>
+                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="contrast" value={blur.value}/>
                 <h3>Grayscale</h3>
-                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="grayscale" value='0'/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="grayscale" value={blur.value}/>
                 <h3>Invert</h3>
-                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="invert" value="0"/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="invert" value={blur.value}/>
                 <h3>Opacity</h3>
-                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="opacity" value="100"/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="opacity" value={blur.value}/>
                 <h3>Saturate</h3>
-                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="Saturate" value="100"/>
+                <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="Saturate" value={blur.value}/>
                 <h3>Sepia</h3>
-                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="sepia" value='0'/>
+                <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="sepia" value={blur.value}/>
                 <h3>Hue-Rotate</h3>
-                <input type='range' min='0' max="360" onChange={handleChangeBlur} data-filter="hue-rotate" value={blur}/>
+                <input type='range' min='0' max="360" onChange={handleChangeBlur} data-filter="hue-rotate" value={blur.value}/>
                 </div>
             </div>
         </div>
