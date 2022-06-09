@@ -9,7 +9,6 @@
     height: 100px;
 }
 .viewer{
-    filter: blur(1px);
     width: 700px;
     height: 600px;
     margin: 15px;
