@@ -1,27 +1,81 @@
-.gallery-container{
-    display: flex;
-    justify-content: center;
-    gap:25px;
+*{
+    margin: 0px;
+    padding: 0px;
+}
 
-}
-.img-gallery{
-    width: 100px;
-    height: 100px;
-}
-.viewer{
-    width: 700px;
-    height: 600px;
-    margin: 15px;
-}
-.grad{
+header{
+    height: 56,78px;
     display: flex;
-    
-
-}
-.filters{
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: space-between;
+    justify-content: space-around;
+    border-bottom: 1px solid #E1E1E1;
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid #E1E1E1;
+    box-shadow: 0px 0px 13px 5px rgba(0, 0, 0, 0.09);
+}
+
+.settings{
+    display: flex;
+    gap: 15.84px;
+    margin-top: 12.24px;
+    margin-bottom: 13.19px;
+}
+
+.conteiner{
+    display: flex;
+    margin-top: 58.32px;
+    margin-left: 152px;
+}
+.subConteiner1{
+    width: 651px;
+    height: 597.6px;
+}
+
+.viewerImg{
+    width: 651px;
+    height:441.36px;
+}
+
+.bars{
+    display: flex;
+    width: 78px;
+    height: 56.16px;
+    gap: 10.8px;
+    margin-top: 21.6px;
+}
+
+.edit{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap:26.64px;
+    row-gap: 40px ;
+    height:40px;
+    margin-left: 100px;
+}
+
+.top{
+    width: 534px;
+    height: 23.76px;
+    background: #FFFFFF;
+    border: 1px solid #E1E1E1;
+    box-shadow: 0px 0px 33px -6px rgba(0, 0, 0, 0.09);
+    border-radius: 4px;
+    text-align: center;
+    grid-column: 1 / span 2;
+}
+
+.scale{
+    display: flex;
     flex-direction: column;
+    gap: 18px;
+}
+.symbols{
+    display: flex;
+    gap: 1.8px;
+}
+
+.scale input {
+    width: 219.14px;
+    height: 2px;
 }
