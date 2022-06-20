@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import './assets/css/index.css'
 import aperture from './assets/icon/aperture.svg'
 import circle from './assets/icon/circle.svg'
@@ -18,23 +18,27 @@ const imagens = ['https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__48
     "https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828__340.jpg", "https://cdn.pixabay.com/photo/2014/01/30/18/26/skyline-255116__340.jpg",]
 
 const App = () => {
-    const [image, setImage] = useState(0)
-    const [blur, setBlur] = useState(0)
-    const [brig, setBrig] = useState(0)
-    const [atr, setAtr] = useState(0)
+    const [image, setImage] = React.useState(0)
+    const [filtro, setFiltro] = React.useState({
+        blur: "",
+        brightness: "",
+        contrast: "",
+        grayscale: "",
+        invert: "",
+        opacity: "",
+        saturate: "",
+        sepia: "",
+        hueRotate: ""
+    })
 
-    function handleChangeBlur(evt) {
-        setBlur({ value: evt.target.value.this })
-        setBrig(evt.target.value)
-        setAtr(evt.target.dataset.filter)
-        console.dir(atr)
-    }
+    function handleChangeBlur({target}) {
+        const {id, value} = target;
+    setFiltro({...filtro, [id] : value })}
 
-    function filterapp() {
-        return (atr === 'blur') ? `${atr}(${brig}px)`
-            : (atr === "hue-rotate") ? `${atr}(${brig}deg)`
-                : `${atr}(${brig}%)`
-    }
+        //function filtros(){
+        //(filtro.blur) ? `${[id]}(${value}px)`
+        //: (filtro.hueRotate) ? `${[id]}(${value}deg)`
+        //: `${[id]}(${value}%)`}
 
     return (
         <Fragment>
@@ -42,16 +46,15 @@ const App = () => {
                 <div className="subConteiner1">
                     <div className="viewer">
                         <button className="arrow">{"<"}</button>
-                        <img className="viewerImg" src={image} alt='' style={{ filter: filterapp() }} />
+                        <img className="viewerImg" src={image} alt='' style={{ filter: `blur(${filtro})` }} />
                         <button className="arrow">{">"}</button>
                     </div>
                     <div className="navBar">
                         <button className="arrow">{"<"}</button>
                         <div className="bars">
-                            {imagens.map(function (image) {
-                                return <img onClick={() => {
+                            {imagens.map((image) => {
+                                return <img key={image} onClick={() => {
                                     setImage(image)
-                                    setBlur({ value: "0" })
                                 }} className="imgBar" src={image} alt='' />
                             })}
                         </div>
@@ -62,39 +65,39 @@ const App = () => {
                     <h2 className="top">Edição</h2>
                     <div className="scale">
                         <div className='symbols'><img src={vector} alt="icon" /><h3>Blur</h3></div>
-                        <input type='range' min='0' max="10" onChange={handleChangeBlur} data-filter="blur" value={blur.value} />
+                        <input id="blur" name="blur" type='range' min='0' max="10" onChange={handleChangeBlur} data-filter="blur" value={filtro.blur} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={sun} alt="icon" /><h3>Brightness</h3> </div>
-                        <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="brightness" value={blur.value} />
+                        <input id="brightness" name="brightness" type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="brightness" value={filtro.brightness} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={sliders} alt="icon" /><h3>Contrast</h3></div>
-                        <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="contrast" value={blur.value} />
+                        <input id="contrast" name="contrast" type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="contrast" value={filtro.contrast} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={aperture} alt="icon" /><h3>Grayscale</h3></div>
-                        <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="grayscale" value={blur.value} />
+                        <input id="grayscale" name="grayscale" type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="grayscale" value={filtro.grayscale} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={repeat} alt="icon" /><h3>Invert</h3></div>
-                        <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="invert" value={blur.value} />
+                        <input id="invert" name="invert" type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="invert" value={filtro.invert} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={gitcommit} alt="icon" /><h3>Opacity</h3></div>
-                        <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="opacity" value={blur.value} />
+                        <input id="opacity" name="opacity" type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="opacity" value={filtro.opacity} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={circle} alt="icon" /><h3>Saturate</h3></div>
-                        <input type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="Saturate" value={blur.value} />
+                        <input id="saturate" name="Saturate" type='range' min='0' max="300" onChange={handleChangeBlur} data-filter="Saturate" value={filtro.saturate} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={copy} alt="icon" /><h3>Sepia</h3></div>
-                        <input type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="sepia" value={blur.value} />
+                        <input id="sepia" name="sepia" type='range' min='0' max="100" onChange={handleChangeBlur} data-filter="sepia" value={filtro.sepia} />
                     </div>
                     <div className="scale">
                         <div className='symbols'><img src={rotate} alt="icon" /><h3>Hue-Rotate</h3></div>
-                        <input type='range' min='0' max="360" onChange={handleChangeBlur} data-filter="hue-rotate" value={blur.value} />
+                        <input id="hueRotate" name="hueRotate" type='range' min='0' max="360" onChange={handleChangeBlur} data-filter="hue-rotate" value={filtro.hueRotate} />
                     </div>
                 </div>
             </div>
